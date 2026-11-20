@@ -41,6 +41,3 @@ content:
       - name: cover
         label: Image de couverture
         type: image
-      - name: body
-        label: Corps de l'article
-        type: rich-text
