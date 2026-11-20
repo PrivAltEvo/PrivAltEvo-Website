@@ -1,6 +1,6 @@
 content:
   - name: articles
-    label: Articles de la Gazette
+    label: Le Report PrivAltEvo
     path: articles
     type: collection
     fields:
