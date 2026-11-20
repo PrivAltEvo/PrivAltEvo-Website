@@ -450,17 +450,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const ARTICLES_BRANCH = "main";
 
     function normalizeCategorySlug(rawCategory = "") {
-        const clean = rawCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-        if (clean.includes("vie") || clean.includes("privee")) return "vie-privee";
-        if (clean.includes("souverainete")) return "souverainete";
-        return "outils";
-    }
+    const clean = rawCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    if (clean.includes("vie") || clean.includes("privee")) return "vie-privee";
+    if (clean.includes("souverainete")) return "souverainete";
+    if (clean.includes("test")) return "tests";
+    return "outils";
+}
 
     function formatCategoryLabel(slug) {
-        if (slug === "vie-privee") return "Vie Privée";
-        if (slug === "souverainete") return "Souveraineté";
-        return "Outils & OS";
-    }
+    if (slug === "vie-privee") return "Vie Privée";
+    if (slug === "souverainete") return "Souveraineté";
+    if (slug === "tests") return "Tests";
+    return "Outils & OS";
+}
 
     function formatMarkdownBodyToHtml(mdText = "") {
         return mdText
@@ -496,8 +498,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const iconMap = {
             "vie-privee": "key",
             "souverainete": "server",
+            "tests": "smartphone",
             "outils": "smartphone"
-        };
+};
 
         return {
             id: slug,
