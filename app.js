@@ -539,4 +539,54 @@ document.addEventListener("DOMContentLoaded", () => {
         closeContact.addEventListener("click", () => contactModal.classList.remove("active"));
         contactModal.addEventListener("click", (e) => { if (e.target === contactModal) contactModal.classList.remove("active"); });
     }
+
+    const REPO_OWNER = "PrivAltEvo";
+const REPO_NAME = "PrivAltEvo-Website";
+const ARTICLES_BRANCH = "main";
+
+function parseMarkdownArticle(rawText, slug) {
+  const match = rawText.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+  const meta = {};
+  let content = rawText;
+
+  if (match) {
+    match[1].split("\n").forEach((line) => {
+      const idx = line.indexOf(":");
+      if (idx > -1) {
+        const key = line.slice(0, idx).trim();
+        const val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+        meta[key] = val;
+      }
+    });
+    content = match[2].trim();
+  }
+
+  return {
+    slug,
+    title: meta.title || slug,
+    category: meta.category || "Outils",
+    excerpt: meta.excerpt || "",
+    date: meta.date || "",
+    content
+  };
+}
+
+async function loadGazetteArticles() {
+  const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/articles?ref=${ARTICLES_BRANCH}`;
+  const res = await fetch(apiUrl);
+  if (!res.ok) return [];
+
+  const files = await res.json();
+  const mdFiles = files.filter((f) => f.type === "file" && f.name.endsWith(".md"));
+
+  const articles = await Promise.all(
+    mdFiles.map(async (file) => {
+      const rawRes = await fetch(file.download_url);
+      const rawText = await rawRes.text();
+      return parseMarkdownArticle(rawText, file.name.replace(/\.md$/, ""));
+    })
+  );
+
+  return articles;
+}
 });
