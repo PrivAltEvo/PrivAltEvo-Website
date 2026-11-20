@@ -140,14 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
     }
-    
+
     // 1. DÉCHIFFREMENT DU TITRE HERO
     function triggerDecryptAnimation() {
         if (!titleElement) return;
         let iterations = 0;
         const originalValue = titleElement.dataset.value;
         fadeElements.forEach(el => el.classList.remove("visible"));
-        
+
         const interval = setInterval(() => {
             titleElement.innerText = originalValue.split("")
                 .map((letter, index) => {
@@ -156,20 +156,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     return letters[Math.floor(Math.random() * letters.length)];
                 })
                 .join("");
-            
+
             if (iterations >= originalValue.length) {
                 clearInterval(interval);
-                titleElement.innerText = originalValue; 
+                titleElement.innerText = originalValue;
                 fadeElements.forEach(el => el.classList.add("visible"));
             }
-            iterations += 1.2; 
+            iterations += 1.2;
         }, 20);
     }
     triggerDecryptAnimation();
 
     // 2. SYSTEME DE FAVORIS LOCAL STORAGE
     let userFavorites = JSON.parse(localStorage.getItem("privaltevo_favs")) || [];
-    
+
     function updateFavUI() {
         const favTriggers = document.querySelectorAll(".fav-trigger");
         favTriggers.forEach(btn => {
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 searchZone.style.display = "none";
                 if (searchInput) {
                     searchInput.value = "";
-                    searchInput.dispatchEvent(new Event('input'));
+                    searchInput.dispatchEvent(new Event("input"));
                 }
             }
         }
@@ -540,53 +540,113 @@ document.addEventListener("DOMContentLoaded", () => {
         contactModal.addEventListener("click", (e) => { if (e.target === contactModal) contactModal.classList.remove("active"); });
     }
 
+    // 8. CHARGEMENT DES ARTICLES CRÉÉS VIA PAGES CMS SUR GITHUB
     const REPO_OWNER = "PrivAltEvo";
-const REPO_NAME = "PrivAltEvo-Website";
-const ARTICLES_BRANCH = "main";
+    const REPO_NAME = "PrivAltEvo-Website";
+    const ARTICLES_BRANCH = "main";
 
-function parseMarkdownArticle(rawText, slug) {
-  const match = rawText.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-  const meta = {};
-  let content = rawText;
+    function normalizeCategorySlug(rawCategory = "") {
+        const clean = rawCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+        if (clean.includes("vie") || clean.includes("privee")) return "vie-privee";
+        if (clean.includes("souverainete")) return "souverainete";
+        return "outils";
+    }
 
-  if (match) {
-    match[1].split("\n").forEach((line) => {
-      const idx = line.indexOf(":");
-      if (idx > -1) {
-        const key = line.slice(0, idx).trim();
-        const val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
-        meta[key] = val;
-      }
+    function formatCategoryLabel(slug) {
+        if (slug === "vie-privee") return "Vie Privée";
+        if (slug === "souverainete") return "Souveraineté";
+        return "Outils & OS";
+    }
+
+    function formatMarkdownBodyToHtml(mdText = "") {
+        return mdText
+            .split(/\n\s*\n/)
+            .map(block => block.trim())
+            .filter(Boolean)
+            .map(block => {
+                if (block.startsWith("### ")) return `<h3>${block.slice(4)}</h3>`;
+                if (block.startsWith("## ")) return `<h3>${block.slice(3)}</h3>`;
+                return `<p>${block.replace(/\n/g, "<br>")}</p>`;
+            })
+            .join("");
+    }
+
+    function parseMarkdownArticle(rawText, slug) {
+        const match = rawText.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+        const meta = {};
+        let rawBody = rawText;
+
+        if (match) {
+            match[1].split("\n").forEach((line) => {
+                const idx = line.indexOf(":");
+                if (idx > -1) {
+                    const key = line.slice(0, idx).trim();
+                    const val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+                    meta[key] = val;
+                }
+            });
+            rawBody = match[2].trim();
+        }
+
+        const catSlug = normalizeCategorySlug(meta.category);
+        const iconMap = {
+            "vie-privee": "key",
+            "souverainete": "server",
+            "outils": "smartphone"
+        };
+
+        return {
+            id: slug,
+            category: catSlug,
+            categoryLabel: formatCategoryLabel(catSlug),
+            icon: iconMap[catSlug] || "mail",
+            image: "",
+            date: meta.date || "Récemment",
+            readTime: "4 min de lecture",
+            title: meta.title || slug,
+            excerpt: meta.excerpt || "",
+            content: formatMarkdownBodyToHtml(rawBody)
+        };
+    }
+
+    async function loadGazetteArticles() {
+        try {
+            const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/articles?ref=${ARTICLES_BRANCH}`;
+            const res = await fetch(apiUrl);
+            if (!res.ok) return [];
+
+            const files = await res.json();
+            if (!Array.isArray(files)) return [];
+
+            const mdFiles = files.filter((f) => f.type === "file" && f.name.endsWith(".md"));
+
+            const cmsArticles = await Promise.all(
+                mdFiles.map(async (file) => {
+                    const rawRes = await fetch(file.download_url);
+                    const rawText = await rawRes.text();
+                    return parseMarkdownArticle(rawText, file.name.replace(/\.md$/, ""));
+                })
+            );
+
+            return cmsArticles.reverse();
+        } catch (err) {
+            console.warn("Impossible de charger les articles CMS :", err);
+            return [];
+        }
+    }
+
+    loadGazetteArticles().then((cmsArticles) => {
+        if (!cmsArticles.length) return;
+        const existingIds = new Set(blogArticles.map(a => a.id));
+        const uniqueNewArticles = cmsArticles.filter(a => !existingIds.has(a.id));
+        if (uniqueNewArticles.length) {
+            blogArticles.unshift(...uniqueNewArticles);
+            const activeTab = document.querySelector(".blog-tab-btn.active");
+            const currentFilter = activeTab ? activeTab.getAttribute("data-blog-filter") : "all";
+            renderBlogs();
+            if (currentFilter && currentFilter !== "all") {
+                renderNewspaper(currentFilter);
+            }
+        }
     });
-    content = match[2].trim();
-  }
-
-  return {
-    slug,
-    title: meta.title || slug,
-    category: meta.category || "Outils",
-    excerpt: meta.excerpt || "",
-    date: meta.date || "",
-    content
-  };
-}
-
-async function loadGazetteArticles() {
-  const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/articles?ref=${ARTICLES_BRANCH}`;
-  const res = await fetch(apiUrl);
-  if (!res.ok) return [];
-
-  const files = await res.json();
-  const mdFiles = files.filter((f) => f.type === "file" && f.name.endsWith(".md"));
-
-  const articles = await Promise.all(
-    mdFiles.map(async (file) => {
-      const rawRes = await fetch(file.download_url);
-      const rawText = await rawRes.text();
-      return parseMarkdownArticle(rawText, file.name.replace(/\.md$/, ""));
-    })
-  );
-
-  return articles;
-}
 });
