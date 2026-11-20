@@ -1,43 +1,15 @@
-media:
-  input: assets/images/articles
-  output: /assets/images/articles
-
 content:
   - name: articles
     label: Articles de la Gazette
     path: articles
-    extension: md
-    format: yaml-frontmatter
+    type: collection
     fields:
       - name: title
         label: Titre
         type: string
-        required: true
-      - name: date
-        label: Date de publication
-        type: date
-        required: true
       - name: category
         label: Rubrique
-        type: select
-        options:
-          values:
-            - Vie privée
-            - Outils
-            - Souveraineté
-        default: Outils
-      - name: excerpt
-        label: Extrait / Chapeau
-        type: text
-        required: true
-      - name: readTime
-        label: Temps de lecture (ex. 4 min)
         type: string
-        default: 4 min
-      - name: featured
-        label: Mettre À la Une
-        type: boolean
-        default: false
-      - name: cover
-        label: Image de couverture
-        type: image
+      - name: excerpt
+        label: Extrait
+        type: text
