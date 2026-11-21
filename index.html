@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivAltEvo — Souveraineté Numérique & Alternatives Éthiques</title>
+    <meta name="description" content="Découvrez des alternatives éco-responsables, éthiques et des solutions libres de droits pour un quotidien numérique plus respectueux.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png?v=4">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=4">
+    <link rel="manifest" href="images/site.webmanifest?v=4">
+</head>
+<body class="light-theme">
+
+    <div class="bg-privacy-animation" aria-hidden="true">
+        <div class="hero-backdrop-wave"></div>
+        <div class="glow-core"></div>
+        <div class="grid-overlay"></div>
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+    </div>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <div class="nav-container">
+            <a href="#accueil" class="logo" id="logo-link">
+                <span class="logo-text">PrivAlt</span><span class="logo-evo">Evo <svg class="logo-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            </a>
+            
+            <div class="nav-right-block">
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="#accueil" class="nav-item active" data-target="page-accueil">Accueil</a></li>
+                    <li><a href="#blog" class="nav-item" data-target="page-blog">Blog</a></li>
+                    <li><a href="#entreprises" class="nav-item" data-target="page-entreprises">Index de Confiance</a></li>
+                    <li class="mobile-only-contact">
+                        <button class="btn-contact open-contact-trigger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>Contact</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="btn-contact desktop-only" id="open-contact">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </span>
+                        <span class="contact-text">Contact</span>
+                    </button>
+                    <button id="theme-toggle" class="theme-btn" aria-label="Changer de thème">
+                        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                    <button class="hamburger" id="hamburger-btn" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="global-search-zone">
+        <div class="search-bar-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="search" id="global-search" placeholder="Rechercher un article ou une structure..." aria-label="Recherche sur le site">
+        </div>
+    </div>
+
+    <main class="content-wrapper">
+        
+        <section id="page-accueil" class="spa-page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-shield-badge" aria-hidden="true">
+                        <div class="hero-shield-halo"></div>
+                        <svg class="hero-shield-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h1 id="decrypt-title" data-value="Reprenez le contrôle de votre vie privée.">Reprenez le contrôle de votre vie privée.</h1>
+                    <p class="hero-desc fade-in-element">
+                        Découvrez des alternatives éco-responsables, éthiques et des solutions libres de droits pour un quotidien numérique plus respectueux.
+                    </p>
+                    <div class="hero-actions fade-in-element">
+                        <a href="#blog" class="btn-primary" id="btn-solutions" data-target="page-blog">
+                            Lire les articles
+                            <span class="lock-icon">
+                                <svg id="lock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path id="lock-shackle" d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                        </a>
+                        <button class="btn-secondary open-contact-trigger">Me faire accompagner</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION : 3 DERNIERS ARTICLES SUR L'ACCUEIL -->
+            <div class="home-blog-section fade-in-element">
+                <div class="home-section-header">
+                    <div>
+                        <span class="category-tag">Journal de bord</span>
+                        <h2>Dernières analyses &amp; guides</h2>
+                    </div>
+                    <a href="#blog" class="btn-secondary btn-sm" data-target="page-blog">Tous les articles →</a>
+                </div>
+                <div class="blog-grid" id="home-blog-grid">
+                    <!-- Injecté dynamiquement via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <section id="page-entreprises" class="spa-page">
+            <div class="entreprises-container">
+                <header class="page-header">
+                    <span class="category-tag">Gardiens du Libre &amp; de l'Utile</span>
+                    <h2>Index de Confiance Acteurs Éthiques</h2>
+                    <p>Ma sélection de structures évaluées selon le respect de la vie privée, la souveraineté, l'utilité collective ou l'impact environnemental.</p>
+                </header>
+
+                <!-- CATÉGORIE 1 : NAVIGATION & RECHERCHE -->
+                <div class="trust-category-block">
+                    <h3 class="trust-category-title">Navigation &amp; Recherche</h3>
+                    <div class="trust-cards-grid" id="trust-grid-nav">
+                        <div class="trust-card-evo" data-search="firefox mozilla navigateur web open source vie privee">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>Firefox</h3></div></div>
+                            <p class="tcard-body">Navigateur web indépendant et open-source, pratique au quotidien et facile à paramétrer pour limiter le pistage sans sacrifier le confort d'usage.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Navigation &amp; Libre</span><span class="tcard-status">Réglable &amp; Connu</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="librewolf navigateur web open source vie privee telemetrie firefox">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>LibreWolf</h3></div></div>
+                            <p class="tcard-body">Navigateur open-source dérivé de Firefox, axé sur la confidentialité et la suppression de la télémétrie tout en s'appuyant sur la base stable de Firefox.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Navigation &amp; Confidentialité</span><span class="tcard-status">Sans Télémétrie</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="duckduckgo moteur de recherche navigateur confidentialite vie privee">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 CONFIDENTIALITÉ</span><h3>DuckDuckGo</h3></div></div>
+                            <p class="tcard-body">Moteur de recherche et navigateur conçus pour ne pas suivre vos recherches ni créer de profil publicitaire, avec des protections contre les traceurs tiers.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Recherche &amp; Protection</span><span class="tcard-status">Sans Profilage</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="qwant france moteur de recherche europeen souverainete">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇫🇷 FRANCE</span><h3>Qwant</h3></div></div>
+                            <p class="tcard-body">Moteur de recherche français respectueux du RGPD, sans suivi publicitaire ni constitution de profils utilisateurs, engagé pour l'indépendance de recherche européenne.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Recherche Souveraine</span><span class="tcard-status">Conforme RGPD</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="ecosia allemagne union europeenne recherche environnement ecologie">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇪🇺 UNION EUROPÉENNE</span><h3>Ecosia</h3></div></div>
+                            <p class="tcard-body">Moteur de recherche basé dans l'UE alliant protection de la vie privée (anonymisation sous 7 jours, sans profilage cross-plateforme) et financement de projets environnementaux.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Environnement &amp; Données</span><span class="tcard-status">Cadre RGPD</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATÉGORIE 2 : MESSAGERIE & RÉSEAU -->
+                <div class="trust-category-block">
+                    <h3 class="trust-category-title">Messagerie &amp; Réseau</h3>
+                    <div class="trust-cards-grid" id="trust-grid-msg">
+                        <div class="trust-card-evo" data-search="signal messagerie chiffrement open source association fondation">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇺🇸 ÉTATS-UNIS</span><h3>Signal</h3></div></div>
+                            <p class="tcard-body">Messagerie chiffrée de bout en bout portée par la Signal Technology Foundation, un organisme à but non lucratif open-source, sans publicité ni cookie de suivi.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Messagerie &amp; Open-Source</span><span class="tcard-status">But Non Lucratif</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="threema suisse messagerie chiffrement anonymat">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇨🇭 SUISSE</span><h3>Threema</h3></div></div>
+                            <p class="tcard-body">Messagerie suisse chiffrée de bout en bout utilisable sans numéro de téléphone ni adresse e-mail, financée par ses utilisateurs sans publicité.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Messagerie Privée</span><span class="tcard-status">Zéro Pub / Suisse</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="mullvad vpn suede securite anonymat">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇸🇪 SUÈDE</span><h3>Mullvad VPN</h3></div></div>
+                            <p class="tcard-body">Acteur suédois reconnu pour sa démarche orientée anonymat et minimisation des données personnelles lors de l'usage du service.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Réseau &amp; Anonymat</span><span class="tcard-status">Minimisation Données</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATÉGORIE 3 : CLOUD, NOTES & BUREAUTIQUE -->
+                <div class="trust-category-block">
+                    <h3 class="trust-category-title">Cloud, Notes &amp; Bureautique</h3>
+                    <div class="trust-cards-grid" id="trust-grid-cloud">
+                        <div class="trust-card-evo" data-search="infomaniak suisse cloud hebergement souverain">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇨🇭 SUISSE</span><h3>Infomaniak</h3></div></div>
+                            <p class="tcard-body">Hébergeur et suite collaborative suisse offrant notamment kDrive (données stockées en Suisse) avec un modèle centré sur ses services et la souveraineté des données.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Cloud &amp; Souveraineté</span><span class="tcard-status">Hébergement Suisse</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="proton mail ag suisse chiffrement drive">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇨🇭 SUISSE</span><h3>Proton AG</h3></div></div>
+                            <p class="tcard-body">Éditeur suisse reconnu pour ses services chiffrés de bout en bout (messagerie, stockage cloud) et son cadre de protection des données sous juridiction suisse.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Vie Privée &amp; Chiffrement</span><span class="tcard-status">Chiffrement E2E</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="nextcloud allemagne cloud fichiers collaboration souverainete">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇩🇪 ALLEMAGNE</span><h3>Nextcloud</h3></div></div>
+                            <p class="tcard-body">Plateforme de cloud et d'outils collaboratifs open-source adoptée par des particuliers, des entreprises et des acteurs publics pour garder la maîtrise de leurs données.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Cloud &amp; Autonomie</span><span class="tcard-status">Open-Source</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="ente photos cloud chiffrement bout en bout open source">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>Ente</h3></div></div>
+                            <p class="tcard-body">Service de sauvegarde photo open-source chiffré de bout en bout, multiplateforme et auto-hébergeable, avec reconnaissance faciale locale sur l'appareil.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Photos &amp; Chiffrement</span><span class="tcard-status">Chiffrement E2E</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="standard notes prise de notes chiffrement bout en bout open source">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>Standard Notes</h3></div></div>
+                            <p class="tcard-body">Application de prise de notes open-source reposant sur le chiffrement de bout en bout, accessible hors ligne et synchronisée de manière chiffrée.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Notes &amp; Chiffrement</span><span class="tcard-status">Open-Source</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="libreoffice bureautique document foundation open source">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>LibreOffice</h3></div></div>
+                            <p class="tcard-body">Suite bureautique open-source soutenue par The Document Foundation, pensée pour respecter la vie privée et l'autonomie des utilisateurs sans IA imposée.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Bureautique &amp; Communs</span><span class="tcard-status">The Document Foundation</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATÉGORIE 4 : SÉCURITÉ & SYSTÈME -->
+                <div class="trust-category-block">
+                    <h3 class="trust-category-title">Sécurité &amp; Système</h3>
+                    <div class="trust-cards-grid" id="trust-grid-sec">
+                        <div class="trust-card-evo" data-search="bitwarden mots de passe coffre fort securite open source">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>Bitwarden</h3></div></div>
+                            <p class="tcard-body">Gestionnaire de mots de passe open-source reposant sur le chiffrement zéro-connaissance, où les données restent chiffrées de bout en bout avant synchronisation.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Sécurité &amp; Identifiants</span><span class="tcard-status">Zéro-Connaissance</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="keepassxc mots de passe local chiffrement anssi open source">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🌐 OPEN-SOURCE</span><h3>KeePassXC</h3></div></div>
+                            <p class="tcard-body">Gestionnaire de mots de passe open-source fonctionnant sans cloud ni abonnement à partir d'un fichier chiffré localement, certifié CSPN par l'ANSSI.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Coffre Local &amp; Libre</span><span class="tcard-status">Visa ANSSI CSPN</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="debian linux systeme exploitation os open source stabilite">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🐧 LOGICIEL LIBRE</span><h3>Debian</h3></div></div>
+                            <p class="tcard-body">Distribution Linux open-source historique reconnue pour sa stabilité et sa fiabilité, utilisée aussi bien sur postes de travail que sur serveurs.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Système &amp; Stabilité</span><span class="tcard-status">Projet Libre</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATÉGORIE 5 : MATÉRIEL, RECONDITIONNÉ & COMMUNS -->
+                <div class="trust-category-block">
+                    <h3 class="trust-category-title">Matériel, Reconditionné &amp; Communs</h3>
+                    <div class="trust-cards-grid" id="trust-grid-hw">
+                        <div class="trust-card-evo" data-search="fairphone pays-bas materiel telephone reparable ecologie">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇳🇱 PAYS-BAS</span><h3>Fairphone</h3></div></div>
+                            <p class="tcard-body">Constructeur de smartphones engagé sur la réparabilité, la longévité matérielle et la transparence sur ses pratiques et sa politique de confidentialité.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Matériel &amp; Durabilité</span><span class="tcard-status">Approche Éthique</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="back market france reconditionne b corp ecologie durabilite">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇫🇷 FRANCE</span><h3>Back Market</h3></div></div>
+                            <p class="tcard-body">Place de marché dédiée aux appareils électroniques reconditionnés certifiée B Corp, favorisant la réutilisation du matériel pour limiter l'impact lié au neuf.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Reconditionné &amp; Circularité</span><span class="tcard-status">Certifié B Corp</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="framasoft france association libre communs numeriques">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇫🇷 FRANCE</span><h3>Framasoft</h3></div></div>
+                            <p class="tcard-body">Association d'éducation populaire financée par les dons (94 % des revenus en 2025), engagée pour l'émancipation numérique, les logiciels libres et l'intérêt général.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Communs &amp; Éducation</span><span class="tcard-status">Association 1901</span></div>
+                        </div>
+
+                        <div class="trust-card-evo" data-search="peertube video libre federe framasoft open source">
+                            <div class="tcard-glow"></div>
+                            <div class="tcard-header"><div class="tcard-meta"><span class="tcard-country">🇫🇷 COMMUNS LIBRES</span><h3>PeerTube</h3></div></div>
+                            <p class="tcard-body">Logiciel libre et fédéré d'hébergement et de partage de vidéos développé par Framasoft, offrant une alternative décentralisée aux plateformes vidéo centralisées.</p>
+                            <div class="tcard-footer"><span class="tcard-tag">Vidéo &amp; Décentralisation</span><span class="tcard-status">Logiciel Libre</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE LISTE DES ARTICLES DU BLOG (DISPOSITION JOURNAL / GAZETTE) -->
+        <section id="page-blog" class="spa-page">
+            <div class="blog-container newspaper-wrapper">
+                <!-- MANCHETTE DU JOURNAL -->
+                <header class="newspaper-masthead">
+                    <div class="masthead-top-bar">
+                        <span>ÉDITION NUMÉRIQUE — SOUVERAINETÉ &amp; LIBRE</span>
+                        <span id="newspaper-current-date">SAMEDI 21 NOVEMBRE 2026</span>
+                        <span>RÉDACTION &amp; TESTS</span>
+                    </div>
+                    <div class="masthead-title-block">
+                        <h2 class="masthead-title">Le Report PrivAltEvo</h2>
+                        <p class="masthead-subtitle">Tests d'outils, analyses et réflexions au quotidien.</p>
+                    </div>
+                    <nav class="newspaper-rubrics" aria-label="Rubriques du journal">
+                        <button class="blog-tab-btn active" data-blog-filter="all">À la une</button>
+                        <button class="blog-tab-btn" data-blog-filter="tests">Tests</button>
+                        <button class="blog-tab-btn" data-blog-filter="outils">Outils</button>
+                        <button class="blog-tab-btn" data-blog-filter="edc">EDC</button>
+                        <button class="blog-tab-btn" data-blog-filter="tech">Tech</button>
+                        <button class="blog-tab-btn" data-blog-filter="societe-usages">Société &amp; Usages</button>
+                        <button class="blog-tab-btn" data-blog-filter="actualites">Actualités</button>
+                    </nav>
+                </header>
+
+                <!-- CORPS DU JOURNAL : UNE + COLONNES -->
+                <div class="newspaper-layout" id="blog-main-grid">
+                    <!-- Injecté dynamiquement via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- MODÈLE DE LECTURE D'UN ARTICLE -->
+        <section id="page-article-view" class="spa-page">
+            <div class="article-reader-container">
+                <button class="btn-back-blog" id="back-to-blog">
+                    <span>←</span> Retour à la Gazette
+                </button>
+
+                <article class="article-full-card">
+                    <div class="article-glow"></div>
+                    <div class="article-hero-cover" id="article-view-cover">
+                        <!-- Vignette bannière injectée dynamiquement -->
+                    </div>
+
+                    <div class="article-full-inner">
+                        <header class="article-full-header">
+                            <div class="article-meta-top">
+                                <span class="article-badge" id="article-view-cat">Catégorie</span>
+                                <span class="article-dot">•</span>
+                                <time id="article-view-date">Date</time>
+                                <span class="article-dot">•</span>
+                                <span id="article-view-readtime">Temps de lecture</span>
+                            </div>
+                            <h1 id="article-view-title">Titre de l'article</h1>
+                            <p class="article-lead" id="article-view-excerpt">Chapô de l'article</p>
+                        </header>
+
+                        <div class="article-divider"></div>
+
+                        <div class="article-body-content" id="article-view-body">
+                            <!-- Contenu HTML complet de l'article -->
+                        </div>
+
+                        <footer class="article-full-footer">
+                            <div class="article-author-box">
+                                <div class="author-shield">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <div>
+                                    <strong>Rédaction PrivAltEvo</strong>
+                                    <span>Pour un numérique libre, souverain et éthique.</span>
+                                </div>
+                            </div>
+                            <div class="article-footer-actions">
+                                <button class="btn-secondary" id="back-to-blog-bottom">← Retour au journal</button>
+                                <a href="#entreprises" class="btn-primary" data-target="page-entreprises">Index de Confiance</a>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-card">
+            <div class="modal-glow"></div>
+            <button class="close-modal" id="close-contact" aria-label="Fermer la fenêtre">&times;</button>
+            
+            <div class="modal-header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            
+            <h2>Sécuriser l'échange</h2>
+            <p class="modal-desc">Pour toute question, suggestion, retour d'expérience ou demande de partenariat, c'est par ici :</p>
+            
+            <div class="contact-email-box">
+                <span class="email-label">COURRIEL SÉCURISÉ</span>
+                <a href="mailto:privaltevo@protonmail.com" class="email-link">privaltevo@protonmail.com</a>
+            </div>
+
+            <div class="modal-socials-wrapper">
+                <span class="socials-title">RÉSEAUX SOUVERAINS & ALTERNATIFS</span>
+                <div class="socials-links-grid">
+                    <a href="https://www.instagram.com/privaltevo/?hl=fr" target="_blank" rel="noopener noreferrer" class="social-item" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/floriansamoyeau/" target="_blank" rel="noopener noreferrer" class="social-item" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.kessel.media" target="_blank" rel="noopener noreferrer" class="social-item" title="Kessel Media">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        <span>Kessel Media</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2026 PrivAltEvo. Souverain, libre et indépendant.</p>
+                <div class="footer-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Données personnelles</a>
+                </div>
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/privaltevo/?hl=fr" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/floriansamoyeau/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://www.kessel.media" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Kessel Media">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
