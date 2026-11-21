@@ -1,15 +1,25 @@
+media:
+  input: images
+  output: images
+
 content:
   - name: articles
     label: Le Report PrivAltEvo
-    path: articles
     type: collection
+    path: articles
     fields:
       - name: title
         label: Titre
         type: string
+      - name: date
+        label: Date
+        type: date
       - name: category
         label: Rubrique
         type: string
       - name: excerpt
         label: Extrait
         type: text
+      - name: body
+        label: Contenu de l'article
+        type: rich-text
