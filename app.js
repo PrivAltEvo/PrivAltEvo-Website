@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="news-story-footer">
                         <span>Publié le ${article.date} • ${article.readTime}</span>
-                        <span class="blog-read-link">Lire l'enquête <span>→</span></span>
+                        <span class="blog-read-link">Lire l'article <span>→</span></span>
                     </div>
                 </div>
             </article>
